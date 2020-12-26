@@ -1,8 +1,6 @@
 import gallery from "./gallery-items.js";
-// console.log(gallery);
 
 const galleryListEl = document.querySelector(".js-gallery");
-// console.log(galleryListEl);
 
 const myString = (array) =>
   array.reduce((string, { preview, original, description }) => {
@@ -16,12 +14,12 @@ galleryListEl.insertAdjacentHTML("afterbegin", myString(gallery));
 
 const modalEl = document.querySelector(".js-lightbox");
 const modalImageEl = modalEl.querySelector(".lightbox__image");
-const modalCloseBtn = modalEl.querySelector(
+const modalClosingBtn = modalEl.querySelector(
   'button[data-action="close-lightbox"]'
 );
 
 galleryListEl.addEventListener("click", galleryClickHandler);
-modalCloseBtn.addEventListener("click", onCloseModal);
+modalClosingBtn.addEventListener("click", ModalCloseHandler);
 
 function galleryClickHandler(event) {
   event.preventDefault();
@@ -32,16 +30,32 @@ function galleryClickHandler(event) {
     return;
   }
 
-  onOpenModal();
+  ModalOpenHandler();
 
   modalImageEl.setAttribute("src", eTarget.dataset.source);
 }
 
-function onOpenModal() {
+function ModalOpenHandler() {
   modalEl.classList.add("is-open");
 }
 
-function onCloseModal() {
+function ModalCloseHandler() {
   modalEl.classList.remove("is-open");
   modalImageEl.setAttribute("src", "");
 }
+
+
+
+/*Подзадачи (обязательные)
+
+Создание и рендер разметки по массиву данных и предоставленному шаблону.
+
+Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
+
+Открытие модального окна по клику на элементе галереи.
+
+Подмена значения атрибута src элемента img.lightbox__image.
+
+Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
+
+Очистка значения атрибута src элемента img.lightbox__image. Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее. */
