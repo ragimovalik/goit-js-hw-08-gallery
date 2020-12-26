@@ -19,7 +19,7 @@ const modalClosingBtn = modalEl.querySelector(
 );
 
 galleryListEl.addEventListener("click", galleryClickHandler);
-modalClosingBtn.addEventListener("click", ModalCloseHandler);
+modalClosingBtn.addEventListener("click", modalCloseHandler);
 
 function galleryClickHandler(event) {
   event.preventDefault();
@@ -30,21 +30,19 @@ function galleryClickHandler(event) {
     return;
   }
 
-  ModalOpenHandler();
+  modalOpenHandler();
 
   modalImageEl.setAttribute("src", eTarget.dataset.source);
 }
 
-function ModalOpenHandler() {
+function modalOpenHandler() {
   modalEl.classList.add("is-open");
 }
 
-function ModalCloseHandler() {
+function modalCloseHandler() {
   modalEl.classList.remove("is-open");
   modalImageEl.setAttribute("src", "");
 }
-
-
 
 /*Подзадачи (обязательные)
 
@@ -59,3 +57,16 @@ function ModalCloseHandler() {
 Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
 
 Очистка значения атрибута src элемента img.lightbox__image. Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее. */
+
+// =============================================================
+/*Дополнительные задачи
+-Закрытие модального окна по клику на div.lightbox__overlay.
+-Закрытие модального окна по нажатию клавиши ESC.
+-Пролистывание изображений галереи в открытом модальном окне 
+клавишами "влево" и "вправо".
+*/
+
+const modalOverlayEl = modalEl.querySelector('.lightbox__overlay');
+console.log(modalOverlayEl);
+
+modalOverlayEl.addEventListener('click', modalCloseHandler)
