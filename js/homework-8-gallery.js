@@ -6,7 +6,7 @@ const myString = (array) =>
   array.reduce((string, { preview, original, description }) => {
     return (
       string +
-      `<li class="gallery__item"><a class="gallery__link" href=${original}><img class="gallery__image" src=${preview} data-source=${original} alt=${description}/></a></li>`
+      `<li class="gallery__item"><a class="gallery__link" href=${original}><img class="gallery__image" src=${preview} data-source=${original} alt="${description}"/> </a></li>`
     );
   }, "");
 
@@ -22,7 +22,6 @@ const modalOverlayEl = modalEl.querySelector(".lightbox__overlay");
 galleryListEl.addEventListener("click", galleryClickHandler);
 modalClosingBtn.addEventListener("click", modalCloseHandler);
 modalOverlayEl.addEventListener("click", modalCloseHandler);
-
 
 function galleryClickHandler(event) {
   event.preventDefault();
@@ -69,5 +68,3 @@ function modalClosinByEsc(event) {
 -Пролистывание изображений галереи в открытом модальном окне 
 клавишами "влево" и "вправо".
 */
-
-
